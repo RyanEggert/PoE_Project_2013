@@ -13,12 +13,13 @@
 #include <Wire.h>
 
 int ping=2; //value to send to other Arduino to verify communications ability
-
+int MesRec=0; //Used to make the Arduino wait until initial data exchange has taken place
 
 void setup()
 {
   Wire.begin(3); // join i2c bus (address optional for master)
   Wire.onReceive(receiveEvent); // register event 
+  Wire.onRequest(dataRequested); 
   
   while (MesRec==0)
   {
@@ -57,3 +58,9 @@ void receiveEvent(int howMany)
   Serial.println(x);         // print the integer
   MesRec++
 }
+
+
+//function which is executed when the other Arduino requests data.
+//registered in Wire.onRequest()
+
+void dataRequested(ReqVar,)
