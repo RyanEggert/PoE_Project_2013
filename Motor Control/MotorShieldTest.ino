@@ -9,7 +9,10 @@
 char Incoming = 0; 	//Used to store the incoming character from the serial port
 String IncDat;	//Used to store the incoming data from the serial port as a string 
 
-long MotorSpeed = 0;
+int RightSpeed = 0;
+int  LeftSpeed = 0;
+int LeftDirection=0;
+int RightDirection=0;
 
 //Motor Shield
 
@@ -21,21 +24,12 @@ Adafruit_DCMotor *B029 = AFMS.getMotor(3); 	//Domino Motor
 
 //Functions
 
-void RunMotors(long Speed) //Run two drive motors
+void RunMotors(int rs, int ls, int rd, int ld) //Run two drive motors
 {
-	if (Speed==0)
-	{
-		B08->run(RELEASE);
-		B02->run(RELEASE);
-	}
-	else
-	{
-		B08->setSpeed(Speed);
-		B08->run(FORWARD);
-		B02->setSpeed(Speed);
-		B02->run(FORWARD);
-	}
-
+	B08->setSpeed(rs);
+	B08->run(RightDirection);
+	B02->setSpeed(ls);
+	B02->run(LeftDirection);
 }
 
 
@@ -75,7 +69,10 @@ void loop()
 
 			if (Incoming==char(003))
 			{
-				MotorSpeed=IncDat.toInt(); //Converts IncDat to a long (if integers)
+				RightSpeed=IncDat.substring(0,3);
+				LeftSpeed =IncDat.substring(3,6);
+				RDirection =IncDat.substring(6,7);
+				LDirection = IncDat.substring(7,8);
 				IncDat=""; //Clear IncDat for next serial transmission
 			}
 			else
@@ -84,7 +81,26 @@ void loop()
 			}
 		}
 	}
-	RunMotors(MotorSpeed);
+
+	if (RightDirection==1)
+	{
+		RightDirection='REVERSE'
+	}
+	else
+	{
+		RightDirection='FORWARD'
+	}
+
+		if (LeftDirection==1)
+	{
+		LeftDirection='REVERSE'
+	}
+	else
+	{
+		LeftDirection='FORWARD'
+	}
+
+	RunMotors(RightSpeed, LeftSpeed,RightDirection,LeftDirection);
 }
 
 //Look into serialEvent
