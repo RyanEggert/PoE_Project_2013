@@ -15,28 +15,29 @@ while begin == 2000 :
 
 print 'Ready' #Print confirmation that the Arduino is ready to recieve data
 
-for x in range(1,20):
+for x in range(1,3):
 	from random import randint
 	rs=randint(0,255) #inclusive
 	ls=randint(0,255)
 	ld=randint(1,2)
 	rd=randint(1,2)
 
-	RightSpeed='rs'+str(rs)+chr(003)
-	LeftSpeed ='ls'+str(ls)+chr(003)
-	LeftDirection='ld'+str(ld)+chr(003)
-	RightDirection='rd'+str(rd)+chr(003)
+	rightspeed=str(rs)
+	leftspeed =str(ls)
+	LeftDirection=str(ld)
+	RightDirection=str(rd)
 
-	s.write(RightSpeed) #Write the new message to the serial port
-	print "RightSpeed:" + RightSpeed #Print confirmation of sent message
-	s.write(LeftSpeed) #Write the new message to the serial port
-	print "LeftSpeed:" + LeftSpeed #Print confirmation of sent message
-	s.write(RightSpeed) #Write the new message to the serial port
-	print "RightDirection:" + RightDirection #Print confirmation of sent message
-	s.write(LeftDirection) #Write the new message to the serial port
-	print "LeftDirection:" + LeftDirection #Print confirmation of sent message
+	RightSpeed=rightspeed.zfill(3)
+	LeftSpeed=leftspeed.zfill(3)
 
+	Transmission=RightSpeed+LeftSpeed+RightDirection+LeftDirection+chr(003)
+
+	s.write(Transmission) #Write the new message to the serial port
+	print "Transmission " + str(x)+ ": " + Transmission #Print confirmation of sent message
+	
 	time.sleep(7)
+
+s.write(str(00000000)+chr(003)) #release the motors when finished
 
 s.close() #After data collection, the serial port is closed.
 print 'Done' #"Done" is printed to verify a successful ending of the program.
