@@ -19,7 +19,7 @@ for x in range(1,20):
 	from random import randint
 	rs=randint(0,255) #inclusive
 	ls=randint(0,255)
-	ld=randint(1,2)
+	ld=randint(1,2) # 1 for reverse, 2 for forward
 	rd=randint(1,2)
 
 	rightspeed=str(rs)
