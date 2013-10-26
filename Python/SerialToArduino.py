@@ -16,7 +16,7 @@ while begin == 2000 :
 print 'Ready' #Print confirmation that the Arduino is ready to recieve data
 
 for x in range(1,3):
-	from random import randint
+    from random import randint
 	rs=randint(0,255) #inclusive
 	ls=randint(0,255)
 	ld=randint(1,2)
