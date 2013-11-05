@@ -10,8 +10,16 @@ s=serial.Serial('COM5',9600) #Opening the serial port resets the Arduino. This w
 print 'Port Opened'#Print confirmation that Pyserial has opened the serial port
 	
 while ArduinoReady == 2000 :	
-	ArduinoReady=s.readline() #Waits to see that the Arduino has outputted a value to the serial port. This indicates that the Arduino has reset and is ready to recieve data
+	print ArduinoReady
+	AR=s.readline() #Waits to see that the Arduino has outputted a value to the serial port. This indicates that the Arduino has reset and is ready to recieve data
 
+	try:		#Checks to see that the Arduino has outputted digits. Not just 				whitespace
+		float(AR)
+		ArduinoReady=AR
+	except ValueError:
+		ArduinoReady=2000
+
+	print ArduinoReady
 print 'Ready' #Print confirmation that the Arduino is ready to recieve data
 
 for x in range(1,3):
