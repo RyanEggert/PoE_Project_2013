@@ -26,9 +26,9 @@ String LDirection;
 //Motor Shield
 
 Adafruit_MotorShield AFMS = Adafruit_MotorShield(); 
-Adafruit_DCMotor *B08 = AFMS.getMotor(1); 	//Right Drive
-Adafruit_DCMotor *B02 = AFMS.getMotor(2);	//Left Drive
-Adafruit_DCMotor *B029 = AFMS.getMotor(3); 	//Domino Motor
+Adafruit_DCMotor *RIGHTD = AFMS.getMotor(1); 	//Right Drive
+Adafruit_DCMotor *LEFTD = AFMS.getMotor(2);	//Left Drive
+Adafruit_DCMotor *DISPENSE = AFMS.getMotor(3); 	//Domino Motor
 
 
 void setup() 
@@ -39,17 +39,17 @@ void setup()
 	IncDat.reserve(200); //Reserve 200 bytes for the incoming serial data
 
 
-	B08->setSpeed(150); //Start both motors
-	B08->run(FORWARD);
-	B08->run(RELEASE);
+	RIGHTD->setSpeed(150); //Start both motors
+	RIGHTD->run(FORWARD);
+	RIGHTD->run(RELEASE);
 
-	B02->setSpeed(150);
-	B02->run(FORWARD);
-	B02->run(RELEASE);
+	LEFTD->setSpeed(150);
+	LEFTD->run(FORWARD);
+	LEFTD->run(RELEASE);
 
-	B029->setSpeed(150);
-	B029->run(FORWARD);
-	B029->run(RELEASE);
+	DISPENSE->setSpeed(150);
+	DISPENSE->run(FORWARD);
+	DISPENSE->run(RELEASE);
 
 	Serial.println("1500"); //Indicates to python that the Arduino is ready
 						 //Windows Only?
@@ -98,10 +98,10 @@ void loop()
 
 void RunMotors(int rs, int ls, byte rd, byte ld) //Run two drive motors
 {
-	B08->setSpeed(rs);
-	B08->run(rd);
-	B02->setSpeed(ls);
-	B02->run(ld);
+	RIGHTD->setSpeed(rs);
+	RIGHTD->run(rd);
+	LEFTD->setSpeed(ls);
+	LEFTD->run(ld);
 }
 //Look into serialEvent
 //Would it make more sense to have serial checking in the void_loop 
