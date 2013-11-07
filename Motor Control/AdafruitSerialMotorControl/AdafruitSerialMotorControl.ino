@@ -13,7 +13,7 @@ byte RightDirection;
 
 long RightSpeed = 0;
 long LeftSpeed = 0;
-long leftdir =0;
+long leftdir = 0;
 long righdir = 0;
 
 String RSpeed =String("");
@@ -52,7 +52,9 @@ void setup()
 	DISPENSE->run(RELEASE);
 
 	Serial.println("1500"); //Indicates to python that the Arduino is ready
-						 //Windows Only?
+							//Windows Only?
+	DISPENSE->setSpeed(100);
+	DISPENSE->run(FORWARD);
 }
 
 void loop() 
@@ -91,7 +93,7 @@ void loop()
 
 
 
-	RunMotors(RightSpeed, LeftSpeed,RightDirection,LeftDirection);
+	RunMotors(RightSpeed,LeftSpeed,RightDirection,LeftDirection);
 }
 
 
