@@ -18,7 +18,7 @@ print AvgY
 AvgMax=(int(AvgX), int(AvgY))
 
 red.drawPoints(pts, color=Color.BLUE, sz=10, width=-1)
-red.drawPoints([AvgMax], color=Color.BLACK,sz=10,width=-1)
+red.drawPoints([AvgMax], color=Color.BLACK,sz=3,width=-1)
 
 d=red.show(type='window')
 

@@ -11,8 +11,11 @@
 # print GlVar
 # print GlVar[]
 
-s='steak'
+import time
 
-x=float(s)
+Timer=time.clock()
 
-print x
+print Timer
+time.sleep(5)
+Timere=time.clock()
+print Timere
