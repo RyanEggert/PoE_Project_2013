@@ -15,6 +15,9 @@ while time.clock()<20:
 
 	mx,pts=red.maxValue(True)
 
+	
+
+
 	(AvgX,AvgY)=tuple(map(mean, zip(*pts)))
 
 	AvgMax=(int(AvgX), int(AvgY))

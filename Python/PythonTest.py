@@ -11,11 +11,17 @@
 # print GlVar
 # print GlVar[]
 
-import time
+# import time
 
-Timer=time.clock()
+# Timer=time.clock()
 
-print Timer
-time.sleep(5)
-Timere=time.clock()
-print Timere
+# print Timer
+# time.sleep(5)
+# Timere=time.clock()
+# print Timere
+
+i=1
+print i
+i+=1
+
+print i
