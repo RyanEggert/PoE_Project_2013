@@ -26,8 +26,8 @@ String LDirection;
 //Motor Shield
 
 Adafruit_MotorShield AFMS = Adafruit_MotorShield(); 
-Adafruit_DCMotor *RIGHTD = AFMS.getMotor(1); 	//Right Drive
-Adafruit_DCMotor *LEFTD = AFMS.getMotor(2);	//Left Drive
+Adafruit_DCMotor *LEFT = AFMS.getMotor(1); 	//Left Drive
+Adafruit_DCMotor *RIGHT = AFMS.getMotor(4);	//Right Drive
 Adafruit_DCMotor *DISPENSE = AFMS.getMotor(3); 	//Domino Motor
 
 
@@ -39,13 +39,13 @@ void setup()
 	IncDat.reserve(200); //Reserve 200 bytes for the incoming serial data
 
 
-	RIGHTD->setSpeed(150); //Start both motors
-	RIGHTD->run(FORWARD);
-	RIGHTD->run(RELEASE);
+	LEFT->setSpeed(150); //Start both motors
+	LEFT->run(FORWARD);
+	LEFT->run(RELEASE);
 
-	LEFTD->setSpeed(150);
-	LEFTD->run(FORWARD);
-	LEFTD->run(RELEASE);
+	RIGHT->setSpeed(150);
+	RIGHT->run(FORWARD);
+	RIGHT->run(RELEASE);
 
 	DISPENSE->setSpeed(150);
 	DISPENSE->run(FORWARD);
@@ -90,9 +90,6 @@ void loop()
 	LeftDirection=leftdir;
 	RightDirection=righdir;
 	
-
-
-
 	RunMotors(RightSpeed,LeftSpeed,RightDirection,LeftDirection);
 }
 
@@ -100,10 +97,10 @@ void loop()
 
 void RunMotors(int rs, int ls, byte rd, byte ld) //Run two drive motors
 {
-	RIGHTD->setSpeed(rs);
-	RIGHTD->run(rd);
-	LEFTD->setSpeed(ls);
-	LEFTD->run(ld);
+	LEFT->setSpeed(rs);
+	LEFT->run(rd);
+	RIGHT->setSpeed(ls);
+	RIGHT->run(ld);
 }
 //Look into serialEvent
 //Would it make more sense to have serial checking in the void_loop 
