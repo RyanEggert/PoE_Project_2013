@@ -1,27 +1,32 @@
-# GlVar=0
-# def CanDefineGlobal(x):
-# 	global GlVar
-# 	GlVar = x
+#!/usr/bin/python
+foo1 = "Hello world"
+foo2 = "bar"
+foo3 = {"1": "a",
+        "2": "b"}
+foo4 = "1+1"
+
+for name in dir():
+    myvalue = eval(name)
+    print name, "is", type(name), "and is equal to ", myvalue
 
 
-# print "Begin"
+# AvgSpeed=100
+# steering=.1
 
-# CanDefineGlobal((5,7,5))
+# RightWheel = (2 * AvgSpeed) / (1 + steering)
+# LeftWheel = steering * RightWheel
 
-# print GlVar
-# print GlVar[]
+# print "Right = " + str(RightWheel)
+# print "Left = " + str(LeftWheel)
+# print (RightWheel+LeftWheel)/2
 
-# import time
+# if LeftWheel<30:
+#     LeftWheel = 30
+#     RightWheel = (steering**-1) * LeftWheel
 
-# Timer=time.clock()
+# print "Right = " + str(RightWheel)
+# print "Left = " + str(LeftWheel)
+# print (RightWheel+LeftWheel)/2
 
-# print Timer
-# time.sleep(5)
-# Timere=time.clock()
-# print Timere
 
-i=1
-print i
-i+=1
 
-print i
