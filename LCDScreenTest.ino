@@ -16,29 +16,12 @@ int ls=145;
 
 void setup() 
 {
-  lcd.begin(16, 2);
-  lcd.clear();
-  pinMode(blRed, OUTPUT);
-  pinMode(blGrn, OUTPUT);
-  pinMode(blBlu, OUTPUT);
-  analogWrite(blRed,0);
-  analogWrite(blGrn,100);
-  analogWrite(blBlu,100);
-  lcd.setCursor(1,0);
-  lcd.print("Left:");
-  lcd.setCursor(0,1);
-  lcd.print("Right:");
-
+  Serial.begin(9600);
+  Serial.println("I work");
+  Serial.println(2+5);
 }
 
 
 void loop() 
 {
-  rs=255;
-  ls=255;
-  lcd.setCursor(7,0);
-  lcd.print(ls);
-  lcd.setCursor(7,1);
-  lcd.print(rs);
-  delay(1000);
 }
