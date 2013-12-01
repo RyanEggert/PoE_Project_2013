@@ -57,11 +57,11 @@ def Pi2Ard(rs, ls, ld, rd):  # Pi to Arduino serial communications
     RightSpeed = rightspeed.zfill(3)
     LeftSpeed = leftspeed.zfill(3)
 
-    Transmission = RightSpeed + LeftSpeed + RightDirection + LeftDirection + chr(003)
+    Trans = RightSpeed + LeftSpeed + RightDirection + LeftDirection + chr(003)
 
-    slink.write(Transmission)  # Write the new message to the serial port
+    slink.write(Trans)  # Write the new message to the serial port
     # Print confirmation of sent message
-    print "Transmission : " + Transmission
+    print "Transmission: " + Trans
 
 
 def CloseSerial():  # Stop drive motors & close Pi<-->Arduino serial link
@@ -108,7 +108,7 @@ while True:
 
 def BinarySteering(x1, x2):
     """Checks to see whether the bot should execute a left/right turn"""
-    #RETURNS A LIST WITH THE RIGHTSPEED and LEFTSPEED for the appropriate turn
+    # RETURNS A LIST WITH THE RIGHTSPEED and LEFTSPEED for the appropriate turn
     if x1 > x2:
         print "I'm turning Left"
         LeftSp = 50
@@ -124,7 +124,7 @@ def BinarySteering(x1, x2):
 
 def BinarySpeed(y1, y2):
     """Checks to see whether the bot should go fast/slow"""
-    #RETURNS A LIST WITH THE RIGHTSPEED and LEFTSPEED for the appropriate vel.
+    # RETURNS A LIST WITH THE RIGHTSPEED and LEFTSPEED for the appropriate vel.
     if y1 < y2:
         print "I'm slowing down"
         LeftSp = 100
@@ -148,7 +148,7 @@ def BinaryCombine(spRight, spLeft, drRight, drLeft):
 
 def BinaryDrive(PL):
     """Function which calls binary control functions"""
-    #RETURNS TUPLE (RIGHTWHEELSPEED,LEFTWHEELSPEED)
+    # RETURNS TUPLE (RIGHTWHEELSPEED,LEFTWHEELSPEED)
     SpeedPoints = BinarySteering(PL[0], PL[1])
     DrivePoints = BinarySpeed(PL[2], PL[3])
     FinalControl = BinaryCombine(SpeedPoints, DrivePoints)

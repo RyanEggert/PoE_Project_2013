@@ -57,11 +57,11 @@ def Pi2Ard(rs, ls, ld, rd):  # Pi to Arduino serial communications
     RightSpeed = rightspeed.zfill(3)
     LeftSpeed = leftspeed.zfill(3)
 
-    Transmission = RightSpeed + LeftSpeed + RightDirection + LeftDirection + chr(003)
+    Trans = RightSpeed + LeftSpeed + RightDirection + LeftDirection + chr(003)
 
-    slink.write(Transmission)  # Write the new message to the serial port
+    slink.write(Trans)  # Write the new message to the serial port
     # Print confirmation of sent message
-    print "Transmission : " + Transmission
+    print "Transmission: " + Trans
 
 
 def CloseSerial():  # Stop drive motors & close Pi<-->Arduino serial link
